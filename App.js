@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { LogBox, Text, View } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { TailwindProvider } from "tailwindcss-react-native";
 
 export default function App() {
+  //disable yellow warning during development
+  LogBox.ignoreAllLogs();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <TailwindProvider>
+      <View className="flex-1 justify-center items-center bg-black">
+        <Text className="text-white">
+          Open up App.js to start working on your app!
+        </Text>
+        <StatusBar style="auto" />
+      </View>
+    </TailwindProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
